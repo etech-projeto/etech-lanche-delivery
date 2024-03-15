@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cardápio</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    </head>
+
+    <body>
+        <header class="content">
+            <div class="logo">
+                <img src="./logo/logo-lanchonete.png" alt="">
+                <h3>Etech Lanches</h3>
+            </div>
+
+            <nav>
+                <ul class="list-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sobrenos.html">Sobre Nós</a></li>
+                    <li><a href="cardapio.html">Cardápio</a></li>
+                    <li><a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a></li>
+                    <li><a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a></li>
+                    <li><a href="carrinho.html"><i class="bi bi-cart"></i></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="cardapio" id="cardapio-pizzas">
+            <h2>Pizzas</h2>
+            <div class="itens-cardapio">
+                <!-- Pizzas aqui -->
+                <div class="calabresa">
+                    <img src="./logo/pizza-calabresa-lanchonete.png" alt="">
+                    <div class="info">
+                        <h3>Pizza Calabresa + Pet 1,5L</h3>
+                        <h4>8 fatias <span>R$30,00</span></h4>
+                        <h4>12 fatias <span>R$35,00</span></h4>
+                        <button class="pedir" data-id="pizza-calabresa">Pedir agora</button>
+                    </div>
+                </div>
+
+                <div class="Portuguesa">
+                    <img src="./logo/pizza-portuguesa-lanchonete.png" alt="">
+                    <div class="info">
+                        <h3>Pizza Portuguesa + Pet 1,5L</h3>
+                        <h4>8 fatias <span>R$30,00</span></h4>
+                        <h4>12 fatias <span>R$35,00</span></h4>
+                        <button class="pedir">Pedir agora</button>
+                    </div>
+                </div>
+
+                <div class="mussarela">
+                    <img src="./logo/pizza-mussarela-lanchonete.jpeg" alt="">
+                    <div class="info">
+                        <h3>Pizza Mussarela + Pet 1,5L</h3>
+                        <h4>8 fatias <span>R$30,00</span></h4>
+                        <h4>12 fatias <span>R$35,00</span></h4>
+                        <button class="pedir">Pedir agora</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cardapio" id="cardapio">
+            <h2>Sanduíches</h2>
+            <div class="itens-cardapio">
+                <!-- Sanduíches aqui -->
+                <div class="Xsalada">
+                    <img src="./logo/x-salada-lanchonete.jpg" alt="">
+                    <div class="info">
+                        <h3>X-salada</h3>
+                        <h4><span>R$7,00</span></h4>
+                        <button class="pedir">Pedir agora</button>
+                    </div>
+                </div>
+    
+                <div class="XBacon">
+                    <img src="./logo/x-bacon-lanchonete.jpeg" alt="">
+                    <div class="info">
+                        <h3>X-Bacon</h3>
+                        <h4><span>R$9,00</span></h4>
+                        <button class="pedir">Pedir agora</button>
+                    </div>
+                </div>
+
+                <div class="promocao">
+                    <img src="./logo/promocao-lanchonete.jpeg" alt="">
+                    <div class="info">
+                        <h3>3 X-salada + Batata Frita + Pet 1,5L</h3>
+                        <h4><span>R$23,00</span></h4>
+                        <button class="pedir">Pedir agora</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Adicione um ouvinte de evento para cada botão "Pedir agora"
+                const buttons = document.querySelectorAll('.pedir');
+                buttons.forEach(button => {
+                    button.addEventListener('click', addToCart);
+                });
+        
+                function addToCart(event) {
+                    // Obtém as informações do item
+                    const item = event.target.closest('.info');
+                    const itemName = item.querySelector('h3').textContent;
+                    const itemPrice = item.querySelector('span').textContent;
+        
+                    // Cria um objeto JavaScript para representar o item
+                    const newItem = {
+                        name: itemName,
+                        price: itemPrice
+                    };
+        
+                    // Armazena o item no carrinho (você pode usar Local Storage, Session Storage, ou outra opção)
+                    // Neste exemplo, usaremos Local Storage
+                    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+                    cartItems.push(newItem);
+                    localStorage.setItem('cart', JSON.stringify(cartItems));
+        
+                    // Redireciona para a página do carrinho
+                    window.location.href = 'carrinho.html';
+                }
+            });
+        </script>
+
+        <section class="contatos" id="contatos">
+            <h3>contatos</h3>
+            <div class="div contato-secao">
+                <div>
+                    <a href="https://api.whatsapp.com/send?phone=92981239923&text=SUA MENSAGEM" ><i class="bi bi-telephone-fill"></i>
+                    <span>(92) 98123-9923</span></a>
+                </div>
+                <div>
+                    <a href="https://www.instagram.com/"><i class="bi bi-instagram"></i>
+                    <span>etech_lanches</span></a>
+                </div>
+                <div>
+                    <a href="https://www.facebook.com/"><i class="bi bi-facebook"></i>
+                    <span>Etech Lanches</span></a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <h4>Desenvolvido por estudantes da Etech</h4>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>
