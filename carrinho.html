@@ -53,7 +53,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Função para limpar o carrinho
-            function limparCarrinho() {
+            function limparCarrinho() 
+            {
                 localStorage.removeItem('cart');
                 document.getElementById('cart-items').innerHTML = ''; // Limpa a lista de itens do carrinho na página
             }
@@ -98,7 +99,8 @@
                     button.addEventListener('click', function () {
                         // Remove o item do carrinho e atualiza a exibição
                         const index = cartItems.findIndex(cartItem => cartItem.id === item.id);
-                        if (index !== -1) {
+                        if (index !== -1) 
+                        {
                             cartItems.splice(index, 1);
                             localStorage.setItem('cart', JSON.stringify(cartItems));
                             cartList.removeChild(li);
